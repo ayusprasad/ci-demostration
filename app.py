@@ -1,18 +1,14 @@
 import streamlit as st
+from math_utils import square, cube, fifth_power
 
-# Streamlit UI
-st.title("Power Calculator")
-st.write("Enter a number to calculate its square, cube, and fifth power.")
+st.set_page_config(page_title="Power Calculator", page_icon="⚡")
 
-# Get user input
-n = st.number_input("Enter an integer", value=1, step=1)
+st.title("⚡ Power Calculator")
+st.markdown("Calculate exponential powers for any integer or floating point number.")
 
-# Calculate results
-square = n ** 2
-cube = n ** 3
-fifth_power = n ** 5
+n = st.number_input("Enter a number:", value=2, step=1)
 
-# Display results
-st.write(f"The square of {n} is: {square}")
-st.write(f"The cube of {n} is: {cube}")
-st.write(f"The fifth power of {n} is: {fifth_power}")
+col1, col2, col3 = st.columns(3)
+col1.metric("Square (n²)", f"{square(n):,}")
+col2.metric("Cube (n³)", f"{cube(n):,}")
+col3.metric("Fifth Power (n⁵)", f"{fifth_power(n):,}")
